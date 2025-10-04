@@ -1,0 +1,115 @@
+{
+    "name": "project-task-api-node",
+    "version": "1.0.0",
+    "description": "API REST em Node.js para gerenciar projetos e tarefas",
+    "homepage": "https://github.com/davidaugusto89/project-task-api-node#readme",
+    "bugs": {
+        "url": "https://github.com/davidaugusto89/project-task-api-node/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/davidaugusto89/project-task-api-node.git"
+    },
+    "license": "ISC",
+    "author": "David Augusto Keller Haddad",
+    "type": "commonjs",
+    "main": "dist/index.js",
+    "engines": {
+        "node": ">=22.0.0"
+    },
+    "scripts": {
+        "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "seed": "ts-node src/seeds/seed.ts",
+        "db:migrate": "sequelize-cli db:migrate",
+        "db:migrate:undo": "sequelize-cli db:migrate:undo",
+        "db:seed": "sequelize-cli db:seed:all",
+        "db:seed:undo": "sequelize-cli db:seed:undo:all",
+        "lint": "eslint \"src/**/*.{ts,tsx}\"",
+        "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+        "format": "prettier --write \"src/**/*.{ts,tsx,js,json,md,yml,yaml}\"",
+        "format:check": "prettier --check \"src/**/*.{ts,tsx,js,json,md,yml,yaml}\"",
+        "prepare": "husky",
+        "test:unit": "jest --runInBand --testPathPattern=tests/unit",
+        "test:e2e": "jest --runInBand --testPathPattern=tests/e2e",
+        "coverage": "jest --coverage --runInBand"
+    },
+    "dependencies": {
+        "axios": "^1.11.0",
+        "compression": "^1.8.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.6.1",
+        "express": "^4.21.2",
+        "express-rate-limit": "^7.5.1",
+        "express-validator": "^7.2.1",
+        "helmet": "^7.2.0",
+        "ioredis": "^5.7.0",
+        "morgan": "^1.10.1",
+        "mysql2": "^3.14.3",
+        "sequelize": "^6.37.7",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.1",
+        "zod": "^4.0.17"
+    },
+    "devDependencies": {
+        "@types/axios": "^0.9.36",
+        "@types/compression": "^1.8.1",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^4.17.23",
+        "@types/helmet": "^4.0.0",
+        "@types/jest": "^30.0.0",
+        "@types/morgan": "^1.9.10",
+        "@types/node": "^24.2.1",
+        "@types/supertest": "^6.0.3",
+        "@types/swagger-jsdoc": "^6.0.4",
+        "@types/swagger-ui-express": "^4.1.8",
+        "@types/validator": "^13.15.2",
+        "@typescript-eslint/eslint-plugin": "^8.39.1",
+        "@typescript-eslint/parser": "^8.39.1",
+        "eslint": "^9.33.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-jest": "^28.14.0",
+        "eslint-plugin-prettier": "^5.5.4",
+        "eslint-plugin-promise": "^7.2.1",
+        "husky": "^9.1.7",
+        "ioredis-mock": "^8.9.0",
+        "jest": "^29.7.0",
+        "lint-staged": "^16.1.5",
+        "nodemon": "^3.1.10",
+        "prettier": "^3.6.2",
+        "sequelize-cli": "^6.6.3",
+        "supertest": "^7.1.4",
+        "ts-jest": "^29.4.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.2"
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node",
+        "roots": [
+            "<rootDir>/tests"
+        ],
+        "setupFilesAfterEnv": [
+            "<rootDir>/tests/jest.setup.ts"
+        ],
+        "globalSetup": "<rootDir>/tests/jest.globalSetup.ts",
+        "globalTeardown": "<rootDir>/tests/jest.globalTeardown.ts",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "json"
+        ],
+        "transform": {
+            "^.+\\.(ts|tsx)$": "ts-jest"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.{ts,tsx,js,json,md,yml,yaml}": [
+            "prettier --write",
+            "eslint --fix"
+        ]
+    }
+}
