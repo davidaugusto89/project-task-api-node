@@ -1,13 +1,13 @@
-import express, { Request, Response } from 'express';
+import { app } from './server';
 
-const app = express();
+async function start() {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`API iniciada na porta :${PORT}`);
+  });
+}
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
-});
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+start().catch((err) => {
+  console.error('Erro ao iniciar a API:', err);
+  process.exit(1);
 });
