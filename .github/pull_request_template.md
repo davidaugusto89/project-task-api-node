@@ -33,17 +33,10 @@ Liste as principais mudanças deste PR. Exemplo:
 <!--
 Passos sugeridos para validar esta PR:
 
-1. Instalar dependências:
-   npm install
+1. Estar executando o projeto com o docker:
+docker compose up -d
 
-2. Executar migrations (se houver):
-   npm run db:migrate
-
-3. Rodar aplicação em dev:
-   npm run dev
-
-4. Testar endpoint de health:
-   curl http://localhost:3000/health
--->
+2. Acessar o navegador ou Insomnia/Postman:
+http://localhost:3000/health
 
 ---
