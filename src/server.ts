@@ -6,6 +6,9 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
+import projectsRouter from './routes/projects.routes';
+import tasksRouter from './routes/tasks.routes';
+
 /** Express */
 export const app = express();
 
@@ -52,6 +55,10 @@ const limiter = rateLimit({
     req.method === 'OPTIONS' || req.path === '/health' || req.path.startsWith('/api-docs'),
 });
 app.use(limiter);
+
+/** Rotas */
+app.use('/', projectsRouter);
+app.use('/', tasksRouter);
 
 /** Logger */
 app.use(morgan('dev'));
