@@ -8,6 +8,7 @@ import morgan from 'morgan';
 
 import projectsRouter from './routes/projects.routes';
 import tasksRouter from './routes/tasks.routes';
+import { setupSwagger } from './swagger';
 
 /** Express */
 export const app = express();
@@ -62,6 +63,9 @@ app.use('/', tasksRouter);
 
 /** Logger */
 app.use(morgan('dev'));
+
+/** Swagger */
+setupSwagger(app);
 
 /** Health check */
 app.get('/health', (_req: Request, res: Response) => {
