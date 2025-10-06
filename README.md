@@ -9,8 +9,8 @@ API REST para gerenciar **projetos** e **tarefas** com **Node.js + Express**, **
 ## ✨ Funcionalidades
 - CRUD de **Projetos**
 - CRUD de **Tarefas**
-- Integração externa (**GitHub**): `GET /projects/:id/github/:username` — busca os **5 repositórios públicos mais recentes** do usuário e vincula ao projeto
-- Cache (in-memory ou **Redis**) com TTL de **10 minutos**
+- Integração externa (**GitHub**): `POST /projects/:id/github/:username` — busca os **5 repositórios públicos mais recentes** do usuário e vincula ao projeto
+- Cache em memória com TTL de **10 minutos** (container Redis disponível)
 - Boas práticas de segurança e performance (middlewares e validação)
 - Testes **unitários** e **E2E**
 
@@ -117,6 +117,7 @@ cp .env.example .env
 # App
 NODE_ENV=development
 PORT=3000
+CORS_ORIGIN=http://localhost:3000
 
 # MySQL
 DB_HOST=mysql
@@ -246,7 +247,7 @@ http://localhost:3000/api-docs
 - `DELETE /tasks/:id` — remove tarefa
 
 ### Integração GitHub
-- `GET /projects/:id/github/:username` — busca no GitHub os **5 últimos repositórios** públicos do `:username`, **vincula ao projeto** e **salva no banco**.
+- `POST /projects/:id/github/:username` — busca no GitHub os **5 últimos repositórios** públicos do `:username`, **vincula ao projeto** e **salva no banco**.
 
 > API usada: `https://api.github.com/users/{username}/repos`
 > **GITHUB_TOKEN é obrigatório**: configure `GITHUB_TOKEN` no `.env` para autenticar contra a API do GitHub e evitar erros de autenticação/limite de requisições.
