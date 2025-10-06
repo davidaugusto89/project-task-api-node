@@ -2,8 +2,6 @@ import { body, param } from 'express-validator';
 
 /**
  * Validações para criar e atualizar projetos.
- *
- * @see {@link https://express-validator.github.io/docs/}
  */
 export const createProjectValidation = [
   body('name')
@@ -29,8 +27,6 @@ export const createProjectValidation = [
 
 /**
  * Validações para atualizar projetos.
- *
- * @see {@link https://express-validator.github.io/docs/}
  */
 export const updateProjectValidation = [
   param('id').isInt({ gt: 0 }).withMessage('O ID deve ser um número inteiro positivo.'),
@@ -52,8 +48,6 @@ export const updateProjectValidation = [
 
 /**
  * Validações para buscar repositórios do GitHub.
- *
- * @see {@link https://express-validator.github.io/docs/}
  */
 export const fetchGitHubReposValidation = [
   param('id').isInt({ gt: 0 }).withMessage('O ID do projeto deve ser um número inteiro.'),
@@ -67,8 +61,6 @@ export const fetchGitHubReposValidation = [
 
 /**
  * Validações para deletar projetos.
- *
- * @see {@link https://express-validator.github.io/docs/}
  */
 export const deleteProjectValidation = [
   param('id').isInt({ gt: 0 }).withMessage('O ID do projeto deve ser um número inteiro.'),

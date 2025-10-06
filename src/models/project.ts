@@ -34,6 +34,7 @@ export type GithubRepo = {
  * @example
  * const projeto = await Project.create({ name: 'Novo Projeto', status: 'active' });
  */
+
 export class Project extends Model<InferAttributes<Project>, InferCreationAttributes<Project>> {
   declare id: CreationOptional<number>;
   declare name: string;
@@ -51,17 +52,18 @@ export class Project extends Model<InferAttributes<Project>, InferCreationAttrib
  *
  * @param {Sequelize} sequelize - Instância do Sequelize.
  * @returns {void}
- *
  * @example
  * import { initProjectModel } from './project';
  * initProjectModel(sequelize);
  */
+
 export const initProjectModel = (sequelize: Sequelize): void => {
   Project.init(
     {
       id: { type: DataTypes.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true },
       name: { type: DataTypes.STRING(120), allowNull: false },
 
+      // manter allowNull e (opcionalmente) defaultValue para refletir a optionalidade
       description: { type: DataTypes.TEXT(), allowNull: true, defaultValue: null },
 
       status: {

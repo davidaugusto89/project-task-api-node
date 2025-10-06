@@ -1,10 +1,13 @@
 #!/bin/sh
 set -e
 
-echo "📝 Copiando .env.example para .env"
+if [ ! -f /app/.env ]; then
+  echo "📝 .env não encontrado; copiando .env.example"
 cp /app/.env.example /app/.env
-
 echo "✅ .env foi copiado"
+else
+  echo "ℹ️ .env existente detectado; mantendo configurações fornecidas"
+fi
 
 echo "⏳ Aguardando MySQL em $DB_HOST:$DB_PORT..."
 i=0

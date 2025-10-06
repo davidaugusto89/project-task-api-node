@@ -31,6 +31,14 @@ export const GitHubService = {
     const project = await ProjectsRepo.findById(projectId);
     if (!project) throw Object.assign(new Error('Projeto não encontrado'), { status: 404 });
 
+    if (!username) {
+      throw Object.assign(new Error('Param "username" é obrigatório'), { status: 400 });
+    }
+
+    if (!process.env.GITHUB_TOKEN) {
+      throw Object.assign(new Error('Env "GITHUB_TOKEN" é obrigatório'), { status: 400 });
+    }
+
     const cacheKey = `gh:${username}:last5`;
     let repos = cache.get<GitHubRepo[]>(cacheKey);
 
