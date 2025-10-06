@@ -2,8 +2,6 @@ import { body, param } from 'express-validator';
 
 /**
  * Validações para criar e atualizar tarefas.
- *
- * @see {@link https://express-validator.github.io/docs/}
  */
 export const createTaskValidation = [
   param('projectId')
@@ -33,8 +31,6 @@ export const createTaskValidation = [
 
 /**
  * Validações para atualizar tarefas.
- *
- * @see {@link https://express-validator.github.io/docs/}
  */
 export const updateTaskValidation = [
   param('id').isInt({ gt: 0 }).withMessage('O ID da tarefa deve ser um número inteiro positivo.'),
@@ -56,8 +52,6 @@ export const updateTaskValidation = [
 
 /**
  * Validações para deletar tarefas.
- *
- * @see {@link https://express-validator.github.io/docs/}
  */
 export const deleteTaskValidation = [
   param('id').isInt({ gt: 0 }).withMessage('O ID da tarefa deve ser um número inteiro positivo.'),
