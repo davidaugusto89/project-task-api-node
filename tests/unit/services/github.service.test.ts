@@ -1,6 +1,3 @@
-// Testes unitários para src/services/github.service.ts
-// Observações: mocks para axios, cache e ProjectsRepo; cada it contém comentário de cenário
-
 jest.mock('axios');
 jest.mock('../../../src/services/cache.service', () => ({
   cache: { get: jest.fn(), set: jest.fn() },
