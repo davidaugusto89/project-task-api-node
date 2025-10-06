@@ -38,5 +38,6 @@ docker compose up -d
 
 2. Acessar o navegador ou Insomnia/Postman:
 http://localhost:3000/health
+-->
 
 ---
