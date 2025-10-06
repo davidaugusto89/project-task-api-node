@@ -1,0 +1,285 @@
+type: collection.insomnia.rest/5.0
+name: Gerenciador - Projetos e Tarefas
+meta:
+  id: wrk_567326e34a3549ca9b2fb97e1f6dec54
+  created: 1755341559085
+  modified: 1755342380305
+  description: ""
+collection:
+  - name: 000 - Sistema
+    meta:
+      id: fld_48652f597f3847958fcc3d3ccc819ca4
+      created: 1755341878739
+      modified: 1755342130987
+      sortKey: -1755341878739
+      description: ""
+    children:
+      - url: "{{ _.baseURL }}/health"
+        name: Health
+        meta:
+          id: req_b5b286f7778b44bc86ab52eee1864a9a
+          created: 1755341559121
+          modified: 1755342005543
+          isPrivate: false
+          description: ""
+          sortKey: -1755341882343
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: 001 - Projetos
+    meta:
+      id: fld_5cdd49c6a349475f9e02089354700176
+      created: 1755341960249
+      modified: 1755342120456
+      sortKey: -1755341960249
+      description: ""
+    children:
+      - url: "{{ _.baseURL }}/projects"
+        name: Lista todos os projetos
+        meta:
+          id: req_1629beb854804f429d665a73f81f59df
+          created: 1755341990934
+          modified: 1755342146233
+          isPrivate: false
+          description: ""
+          sortKey: -1755341990934
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseURL }}/projects"
+        name: Cria um projeto
+        meta:
+          id: req_26f301ee2d5c456db2e0a7c221788920
+          created: 1755342152755
+          modified: 1755342241270
+          isPrivate: false
+          description: ""
+          sortKey: -1755342152755
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Projeto inserido Insomnia",
+            	"description": "Primeiro projeto criado pelo Insomnia",
+            	"status": "active"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseURL }}/projects/1"
+        name: Retorna dados do projeto
+        meta:
+          id: req_a03550e34a17444682d93bbea4e62cfe
+          created: 1755342272633
+          modified: 1755342293419
+          isPrivate: false
+          description: ""
+          sortKey: -1755341936638.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseURL }}/projects/3"
+        name: Atualiza informações do projeto
+        meta:
+          id: req_654845654fc741e4ae6e2f675d123e48
+          created: 1755342310790
+          modified: 1755342408944
+          isPrivate: false
+          description: ""
+          sortKey: -1755342031389.25
+        method: PUT
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            	"name": "Projeto inserido Insomnia - v1.02",
+            	"description": "Primeiro projeto criado pelo Insomnia - atualização na descrição",
+            	"status": "active"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseURL }}/projects/3"
+        name: Remove um projeto
+        meta:
+          id: req_10bced3ae1bd428897cf7a207af7edfc
+          created: 1755342401525
+          modified: 1755342416470
+          isPrivate: false
+          description: ""
+          sortKey: -1755341936538.5
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: 002 - Tarefas
+    meta:
+      id: fld_0abd28c4af7c4e7e979c0b1b9d1639ac
+      created: 1755342056447
+      modified: 1755342126636
+      sortKey: -1755341919494
+      description: ""
+    children:
+      - url: "{{ _.baseURL }}/projects/1/tasks"
+        name: Cria tarefa vinculada a um projeto
+        meta:
+          id: req_389f849725064b35b58d498de3a5426a
+          created: 1755342056448
+          modified: 1755342612425
+          isPrivate: false
+          description: ""
+          sortKey: -1755341990934
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"title": "Tarefa testar Insomnia",
+            	"description": "Testar os endpoints no Insomnia e validar.",
+            	"status": "pending"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseURL }}/tasks/4"
+        name: Atualiza status/título/descrição
+        meta:
+          id: req_3981a4476a644cb3b6e802d4b69b28c1
+          created: 1755342750640
+          modified: 1755342800200
+          isPrivate: false
+          description: ""
+          sortKey: -1755341963786.25
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"status": "done"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseURL }}/tasks/5"
+        name: Remove tarefa
+        meta:
+          id: req_2bceb808426344de8aaf8d0f13437e69
+          created: 1755342835534
+          modified: 1755342849613
+          isPrivate: false
+          description: ""
+          sortKey: -1755341950212.375
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_29d77945bc84bff17844e99abe49da39b968dea9
+    created: 1755341559087
+    modified: 1755341559087
+environments:
+  name: Base Environment
+  meta:
+    id: env_29d77945bc84bff17844e99abe49da39b968dea9
+    created: 1755341559086
+    modified: 1755341574499
+    isPrivate: false
+  data:
+    baseURL: ""
+  subEnvironments:
+    - name: Localhost
+      meta:
+        id: env_6f67a339d54f4a99866bd13ab30d8e44
+        created: 1755341600229
+        modified: 1755341648515
+        isPrivate: false
+        sortKey: 1755341600229
+      data:
+        baseURL: http://localhost:3000
+      color: "#1a40ff"
