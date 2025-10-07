@@ -10,6 +10,9 @@ module.exports = {
     dialect: 'mysql',
     logging: process.env.DB_LOGGING === 'true' ? console.log : false,
     define: { underscored: true, timestamps: true },
+    pool: { max: 10, min: 0, acquire: 20000, idle: 10000 },
+    dialectOptions: { connectTimeout: 15000 },
+    timezone: '+00:00',
   },
   test: {
     username: process.env.DB_USER || 'root',
@@ -20,6 +23,9 @@ module.exports = {
     dialect: 'mysql',
     logging: false,
     define: { underscored: true, timestamps: true },
+    pool: { max: 10, min: 0, acquire: 20000, idle: 10000 },
+    dialectOptions: { connectTimeout: 15000 },
+    timezone: '+00:00',
   },
   production: {
     username: process.env.DB_USER,
@@ -30,5 +36,8 @@ module.exports = {
     dialect: 'mysql',
     logging: false,
     define: { underscored: true, timestamps: true },
+    pool: { max: 10, min: 0, acquire: 20000, idle: 10000 },
+    dialectOptions: { connectTimeout: 15000 },
+    timezone: '+00:00',
   },
 };

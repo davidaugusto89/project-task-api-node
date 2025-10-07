@@ -71,7 +71,7 @@ app.use(
 
 // Healthcheck simples (mantém compatibilidade com testes e2e)
 app.get('/health', (_req, res) => {
-  return res.status(200).json({ status: 'ok' });
+  return res.status(200).json({ status: 'ok', message: 'This is the way. (Mandalorian)' });
 });
 
 // Swagger (mantém /api-docs)
@@ -102,14 +102,10 @@ export class AppError extends Error {
 // Error handler central
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: unknown, req: Request, res: Response, _next: NextFunction) => {
-  // Log mínimo estruturado
-  // (Evite logar dados sensíveis de req.body)
-  console.error('[error]', {
-    reqId: req.id,
-    path: req.path,
-    method: req.method,
-    err,
-  });
+  // evitando log de erros de testes
+  if (process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'testing') {
+    console.error('[error]', { reqId: req.id, path: req.path, method: req.method, err });
+  }
 
   if (err instanceof AppError) {
     return res.status(err.status).json({
@@ -117,8 +113,13 @@ app.use((err: unknown, req: Request, res: Response, _next: NextFunction) => {
     });
   }
 
-  // Erros de validação
-  return res.status(500).json({
-    error: { message: 'Internal Server Error', reqId: req.id },
-  });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const maybe: any = err;
+  if (maybe && typeof maybe.status === 'number') {
+    return res.status(maybe.status).json({
+      error: { message: maybe.message ?? 'Error', reqId: req.id },
+    });
+  }
+
+  return res.status(500).json({ error: { message: 'Internal Server Error', reqId: req.id } });
 });
