@@ -49,8 +49,16 @@ export const initTaskModel = (sequelize: Sequelize) => {
     {
       id: { type: DataTypes.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true },
       projectId: { type: DataTypes.INTEGER.UNSIGNED, allowNull: false, field: 'project_id' },
-      title: { type: DataTypes.STRING(120), allowNull: false },
-      description: { type: DataTypes.TEXT, allowNull: true },
+      title: {
+        type: DataTypes.STRING(160),
+        allowNull: false,
+        validate: { notEmpty: true, len: [1, 160] },
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+        validate: { notEmpty: true, len: [1, 65535] },
+      },
       status: {
         type: DataTypes.ENUM('pending', 'in_progress', 'done'),
         allowNull: false,
@@ -77,4 +85,5 @@ export const initTaskModel = (sequelize: Sequelize) => {
       underscored: true,
     },
   );
+  Task.addScope('defaultScope', { order: [['createdAt', 'DESC']] }, { override: true });
 };

@@ -61,7 +61,11 @@ export const initProjectModel = (sequelize: Sequelize): void => {
   Project.init(
     {
       id: { type: DataTypes.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true },
-      name: { type: DataTypes.STRING(120), allowNull: false },
+      name: {
+        type: DataTypes.STRING(160),
+        allowNull: false,
+        validate: { notEmpty: true, len: [1, 160] },
+      },
 
       // manter allowNull e (opcionalmente) defaultValue para refletir a optionalidade
       description: { type: DataTypes.TEXT(), allowNull: true, defaultValue: null },
@@ -100,4 +104,6 @@ export const initProjectModel = (sequelize: Sequelize): void => {
       underscored: true,
     },
   );
+
+  Project.addScope('defaultScope', { order: [['createdAt', 'DESC']] }, { override: true });
 };
