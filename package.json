@@ -21,7 +21,6 @@
         "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
         "build": "tsc",
         "start": "node dist/index.js",
-        "seed": "ts-node src/seeds/seed.ts",
         "db:migrate": "sequelize-cli db:migrate",
         "db:migrate:undo": "sequelize-cli db:migrate:undo",
         "db:seed": "sequelize-cli db:seed:all",
