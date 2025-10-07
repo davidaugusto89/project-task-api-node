@@ -69,7 +69,7 @@ collection:
         meta:
           id: req_26f301ee2d5c456db2e0a7c221788920
           created: 1755342152755
-          modified: 1755342241270
+          modified: 1755356685249
           isPrivate: false
           description: ""
           sortKey: -1755342152755
@@ -95,12 +95,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _.baseURL }}/projects/1"
+      - url: "{{ _.baseURL }}/projects/2"
         name: Retorna dados do projeto
         meta:
           id: req_a03550e34a17444682d93bbea4e62cfe
           created: 1755342272633
-          modified: 1755342293419
+          modified: 1755366534687
           isPrivate: false
           description: ""
           sortKey: -1755341936638.5
@@ -147,17 +147,49 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _.baseURL }}/projects/3"
+      - url: "{{ _.baseURL }}/projects/1"
         name: Remove um projeto
         meta:
           id: req_10bced3ae1bd428897cf7a207af7edfc
           created: 1755342401525
-          modified: 1755342416470
+          modified: 1755366529928
           isPrivate: false
           description: ""
           sortKey: -1755341936538.5
         method: DELETE
         headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseURL }}/projects/2/github/davidaugusto89"
+        name: " Busca os 5 últimos repositórios públicos de um usuário no GitHub e
+          vincula ao projeto (salvando no banco)"
+        meta:
+          id: req_63b94d38f76f4e6f8aa260c56a963f33
+          created: 1755345084609
+          modified: 1759790357884
+          isPrivate: false
+          description: ""
+          sortKey: -1755341936438.5
+        method: GET
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Projeto inserido Insomnia",
+            	"description": "Primeiro projeto criado pelo Insomnia",
+            	"status": "active"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
           - name: User-Agent
             value: insomnia/11.4.0
         settings:
@@ -181,7 +213,7 @@ collection:
         meta:
           id: req_389f849725064b35b58d498de3a5426a
           created: 1755342056448
-          modified: 1755342612425
+          modified: 1755356871287
           isPrivate: false
           description: ""
           sortKey: -1755341990934
@@ -207,12 +239,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _.baseURL }}/tasks/4"
+      - url: "{{ _.baseURL }}/tasks/2"
         name: Atualiza status/título/descrição
         meta:
           id: req_3981a4476a644cb3b6e802d4b69b28c1
           created: 1755342750640
-          modified: 1755342800200
+          modified: 1755356986008
           isPrivate: false
           description: ""
           sortKey: -1755341963786.25
