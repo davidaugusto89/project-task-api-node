@@ -37,11 +37,11 @@ src
 ├── database
 │   ├── config.js
 │   ├── migrations
-│   │   ├── 20250813-001-create-projects.js
-│   │   └── 20250813-002-create-tasks.js
+│   │   ├── 20251004-001-create-projects.js
+│   │   └── 20251004-002-create-tasks.js
 │   └── seeders
-│       ├── 20250813-001-demo-projects.js
-│       └── 20250813-001-demo-tasks.js
+│       ├── 20251004-001-demo-projects.js
+│       └── 20251004-001-demo-tasks.js
 ├── index.ts
 ├── middlewares
 │   └── validate.ts
