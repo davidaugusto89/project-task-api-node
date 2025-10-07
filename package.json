@@ -10,7 +10,7 @@
         "type": "git",
         "url": "git+https://github.com/davidaugusto89/project-task-api-node.git"
     },
-    "license": "ISC",
+    "license": "MIT",
     "author": "David Augusto Keller Haddad",
     "type": "commonjs",
     "main": "dist/index.js",
